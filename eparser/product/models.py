@@ -1,8 +1,7 @@
 from django.db import models
 
-# Create your models here.
-class Phone(models.Model):
 
+class Phone(models.Model):
     initial = True
 
     brand = models.CharField(max_length=255)
@@ -13,9 +12,9 @@ class Phone(models.Model):
 
     def __str__(self):
         return 'Brand - {} Name - {} Version -  {}, price - {}'.format(self.brand, self.name, self.model, self.price)
+
 
 class Laptop(models.Model):
-
     initial = True
 
     brand = models.CharField(max_length=255)
@@ -26,3 +25,13 @@ class Laptop(models.Model):
 
     def __str__(self):
         return 'Brand - {} Name - {} Version -  {}, price - {}'.format(self.brand, self.name, self.model, self.price)
+
+
+class Order(models.Model):
+    initial = True
+
+    customer = models.CharField(max_length=255)
+    phone = models.ForeignKey(Phone, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return 'Order № {}, Customer - {}, Phone - {} '.format(self.pk, self.customer, self.phone.name)

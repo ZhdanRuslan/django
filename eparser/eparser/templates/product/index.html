@@ -1,28 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Django ITEA</title>
+    <style type="text/css">
+    body{
+        background-color: #dce0c3;
+        padding-width: 3%;
+    }
+    h1 {
+        font-size: 120%;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        color: #333366;
+    }
+    p {
+        background-color: maroon; /* Цвет фона под текстом параграфа */
+        color: white; /* Цвет текста */
+    }
+    div {
+        font-size: 100%;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        color: #333366;
 
+    }
+
+
+    </style>
 </head>
+
 <body>
 <h1>Product Django!</h1>
-{% for phone in all_phones %}
-<div>
-    <p> ID - {{phone.id}} </p>
-    <p> Brand - {{phone.brand}} </p>
-    <a>
-        <a href="detail-view/{{phone.id}}">Details</a> </a>
-    </p>
-</div>
-{% endfor %}
 
-{% for laptop in all_laptops %}
-<div>
-    <p> ID - {{laptop.id}} </p>
-    <p> Brand - {{laptop.brand}} </p>
-    </p>
+<br>
+    {% for phone in all_phones %} </br>
+    <p> ID: {{phone.id}} </p>
+    Brand: {{phone.brand}} </br>
+    <a href="detail-view/{{phone.id}}">Details</a>
+    {% endfor %}
 </div>
-{% endfor %}
+
+<div>
+    {% for laptop in all_laptops %}
+    <p> ID: {{laptop.id}} </p>
+    Brand: {{laptop.brand}} </br>
+    <a href="detail-view/{{laptop.id}}">Details</a>
+    {% endfor %}
+</div>
+
+<div>
+    {% for order in all_orders %}
+    <p> ID: {{order.id}} </p>
+    Customer: {{order.customer}} </br>
+    Phone: {{order.phone.name}} </br>
+    <a href="detail-view/{{order.id}}">Details</a>
+    {% endfor %}
+</div>
+
 </body>
+
 </html>
