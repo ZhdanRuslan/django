@@ -11,7 +11,7 @@ def main():
     rabota_ua_strategy = ParseRabotaUa()
     context = Context(rabota_ua_strategy)
     list_urls = []
-    [list_urls.append(REQUEST_URL + str(i)) for i in range(1, 10)]
+    [list_urls.append(REQUEST_URL + str(i)) for i in range(1, 30)]
 
     # print(list_urls)
     result = loop.run_until_complete(async_request(list_urls))
