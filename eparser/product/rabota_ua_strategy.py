@@ -1,7 +1,8 @@
 import lxml.html
 
-from eparser.eparser.modules.base_strategy import Strategy
-from eparser.eparser.tools import Vacancy
+from eparser.product.base_strategy import Strategy
+from eparser.product.module_settings import CITY
+from eparser.product.models import Vacancy
 
 
 class ParseRabotaUa(Strategy):
@@ -14,16 +15,12 @@ class ParseRabotaUa(Strategy):
         title = html_data.find_class('f-visited-enable ga_listing')
         company = html_data.find_class('f-text-dark-bluegray f-visited-enable')
         preview = html_data.find_class('f-vacancylist-shortdescr')
-        result_list = list()
+
         if title:
             for title, company, preview in zip(title, company, preview):
                 title = title.get('title')
                 company = company.get('title')
-                preview = preview.text_content()
-
-                vac = Vacancy(title, company, preview)
-                print(vac)
-
-                result_list.append(vac)
-
-        return result_list
+                short_descr = preview.text_content()
+                print('Vacancy: {}, Company: {}, {}'.format(title, company, CITY))
+                print(short_descr.text_content())
+                v = Vacancy.create(title, company, short_descr)
