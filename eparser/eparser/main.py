@@ -10,8 +10,12 @@ def main():
     loop = asyncio.get_event_loop()
     rabota_ua_strategy = ParseRabotaUa()
     context = Context(rabota_ua_strategy)
-    result = loop.run_until_complete(async_request(REQUEST_URL))
-    context.parse_vacancy(result)
+    l = []
+    [l.append(REQUEST_URL + str(i)) for i in range(1, 10)]
+
+    for i in l:
+        result = loop.run_until_complete(async_request(i))
+        context.parse_vacancy(result)
 
 
 if __name__ == "__main__":

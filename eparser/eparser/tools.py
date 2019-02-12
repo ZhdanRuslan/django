@@ -3,7 +3,8 @@ import aiohttp
 
 async def fetch(session, url):
     async with session.get(url) as response:
-        return await response.text()
+        if response.status == 200:
+            return await response.text()
 
 
 async def async_request(url):
