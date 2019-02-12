@@ -13,8 +13,10 @@ class ParseRabotaUa(Strategy):
         html_data = lxml.html.fromstring(html_data)
         title = html_data.find_class('f-visited-enable ga_listing')
         company = html_data.find_class('f-text-dark-bluegray f-visited-enable')
+        preview = html_data.find_class('f-vacancylist-shortdescr')
 
         if title:
-            for vacancy, company in zip(title, company):
+            for vacancy, company, short_descr in zip(title, company, preview):
                 print('Vacancy: {}, Company: {}, {}'.format(vacancy.get('title'), company.get('title'),
                                                             CITY))
+                print(short_descr.text_content())

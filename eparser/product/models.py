@@ -35,3 +35,9 @@ class Order(models.Model):
 
     def __str__(self):
         return 'Order № {}, Customer - {}, Phone - {} '.format(self.pk, self.customer, self.phone.name)
+
+
+class Vacancy(models.Model):
+    initial = True
+
+
