@@ -1,6 +1,7 @@
 import aiohttp
 import asyncio
-import lxml.html
+
+from eparser.eparser.modules.rabota import parse_vacancy, REQUEST_URL
 
 
 async def fetch(session, url):
@@ -8,18 +9,11 @@ async def fetch(session, url):
         return await response.text()
 
 
-async def main():
+async def async_request(REQUEST_URL):
     async with aiohttp.ClientSession() as session:
-        html = await fetch(session, 'https://rabota.ua/zapros/python/%d0%ba%d0%b8%d0%b5%d0%b2')
-        html = lxml.html.fromstring(html)
-        root = html.find_class('f-visited-enable ga_listing')
-
-        if root:
-            for vacancy in root:
-                title = vacancy.text_content()
-                title = title.strip()
-                print(title)
+        html = await fetch(session, REQUEST_URL)
+        await parse_vacancy(html)
 
 
 loop = asyncio.get_event_loop()
-loop.run_until_complete(main())
+loop.run_until_complete(async_request(REQUEST_URL))
