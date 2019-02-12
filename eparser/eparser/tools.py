@@ -1,3 +1,4 @@
+import asyncio
 import aiohttp
 
 
@@ -7,7 +8,10 @@ async def fetch(session, url):
             return await response.text()
 
 
-async def async_request(url):
+async def async_request(urls):
+    tasks = []
     async with aiohttp.ClientSession() as session:
-        html = await fetch(session, url=url)
-        return html
+        for url in urls:
+            tasks.append(fetch(session, url))
+        return str(await asyncio.gather(*tasks))
+
