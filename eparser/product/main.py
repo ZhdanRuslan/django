@@ -1,9 +1,9 @@
 import asyncio
 
-from eparser.vacancy_aggregator.modules.base_strategy import Context
-from eparser.vacancy_aggregator.modules.module_settings import REQUEST_URL
-from eparser.vacancy_aggregator.modules.rabota_ua_strategy import ParseRabotaUa
-from eparser.vacancy_aggregator.tools import async_request
+from eparser.product.base_strategy import Context
+from eparser.product.module_settings import REQUEST_URL
+from eparser.product.rabota_ua_strategy import ParseRabotaUa
+from eparser.product.tools import async_request
 
 
 def main():
