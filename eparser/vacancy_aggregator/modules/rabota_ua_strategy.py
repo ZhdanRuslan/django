@@ -1,7 +1,7 @@
 import lxml.html
 
-from eparser.eparser.modules.base_strategy import Strategy
-from eparser.eparser.tools import Vacancy
+from eparser.vacancy_aggregator.modules.base_strategy import Strategy
+from eparser.vacancy_aggregator.tools import Vacancy
 
 
 class ParseRabotaUa(Strategy):

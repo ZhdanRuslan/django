@@ -40,4 +40,6 @@ class Order(models.Model):
 class Vacancy(models.Model):
     initial = True
 
-
+    company = models.CharField(max_length=255)
+    position = models.CharField(max_length=255)
+    title = models.CharField(max_length=2048)
