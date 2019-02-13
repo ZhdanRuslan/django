@@ -16,13 +16,3 @@ async def async_request(urls):
         return str(await asyncio.gather(*tasks))
 
 
-class Vacancy():
-
-    def __init__(self, company, position, short_descr):
-        self.company = company
-        self.position = position
-        self.short_desct = short_descr
-
-    def __str__(self):
-        return '{} in {}'.format(self.company, self.position)
-
