@@ -16,7 +16,7 @@ async def async_request(urls):
         return str(await asyncio.gather(*tasks))
 
 
-class Vacancy:
+class Vacancy():
 
     def __init__(self, company, position, short_descr):
         self.company = company
@@ -25,3 +25,4 @@ class Vacancy:
 
     def __str__(self):
         return '{} in {}'.format(self.company, self.position)
+

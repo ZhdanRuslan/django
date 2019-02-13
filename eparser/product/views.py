@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from .models import Phone, Laptop, Order
-
+from .main import start_app
 
 # Create your views here.
 
 
 def index(request):
     context = dict()
+    start_app()
     all_phones = Phone.objects.all()
     all_laptops = Laptop.objects.all()
     all_orders = Order.objects.all()

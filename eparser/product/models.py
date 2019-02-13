@@ -44,7 +44,7 @@ class Vacancy(models.Model):
     position = models.CharField(max_length=255)
     title = models.CharField(max_length=2048)
 
-    @classmethod
-    def create(cls, company, position, title):
-        return cls(company, position, title)
+    # @classmethod
+    # def create(cls, company, position, title):
+    #     return cls(company, position, title)
 
