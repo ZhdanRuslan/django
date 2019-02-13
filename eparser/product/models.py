@@ -42,9 +42,10 @@ class Vacancy(models.Model):
 
     company = models.CharField(max_length=255)
     position = models.CharField(max_length=255)
-    title = models.CharField(max_length=2048)
+    title = models.TextField(max_length=2048)
 
-    # @classmethod
-    # def create(cls, company, position, title):
-    #     return cls(company, position, title)
+    def __str__(self):
+        return '{} in {}'.format(self.position, self.company)
+
+
 

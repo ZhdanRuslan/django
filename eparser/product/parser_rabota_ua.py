@@ -1,6 +1,6 @@
 import lxml.html
 
-from eparser.product.tools import Vacancy
+from .models import Vacancy
 
 
 def parse_vacancy(html_data):
@@ -15,14 +15,5 @@ def parse_vacancy(html_data):
             company = company.get('title')
             preview = preview.text_content()
 
-            # vac = Vacancy().objects.create()
-            vac = Vacancy(title, company, preview)
-            # vac.title = title
-            # vac.company = company
-            # vac.title = preview
+            Vacancy.objects.create(company=company, position=title, title=preview)
 
-            print(vac)
-
-            result_list.append(vac)
-
-    return result_list

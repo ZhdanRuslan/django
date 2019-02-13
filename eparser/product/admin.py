@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Phone, Laptop, Order
+from .models import Phone, Laptop, Order, Vacancy
 
 admin.site.register(Phone)
 admin.site.register(Laptop)
 admin.site.register(Order)
+admin.site.register(Vacancy)
