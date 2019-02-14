@@ -1,15 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Vacancy
 from .main import start_app
 
 
 def index(request):
-    if request.GET.get('mybtn') == 'START':
-        start_app()
-    context = dict()
-    all_vacancies = Vacancy.objects.all()
-    context['all_vacancies'] = all_vacancies
-    return render(request, 'product/index.html', context)
+
+    if request.user.is_authenticated:
+        if request.GET.get('mybtn') == 'START':
+            start_app()
+        context = dict()
+        all_vacancies = Vacancy.objects.all()
+        context['all_vacancies'] = all_vacancies
+        return render(request, 'product/index.html', context)
+    else:
+        return redirect('accounts/login/')
 
 
 def detail_view(request, pk):
