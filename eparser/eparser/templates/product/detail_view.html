@@ -3,15 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style type="text/css">
+    body{
+        background-color: #dce0c3;
+        padding: 3%;
+    }
+    h1 {
+        font-size: 120%;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        color: #333366;
+    }
+    h2 {
+        font-size: 120%;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+    p {
+        font-size: 150%;
+        <!--background-color: maroon;-->
+        color: black;
+    }
+    div {
+        font-size: 100%;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        color: #333366;
+
+    }
+
+    </style>
 
 </head>
 <body>
 <a href="/product/">Go back</a>
 <h1>
-    Phone - {{ phone_instance.brand }} {{ phone_instance.model }} {{ phone_instance.year }} year
+    Vacancy - {{ vacancy_instance.position }} {{ vacancy_instance.company }}
 </h1>
-
-<h2>{{ phone_instance.price }} $</h2>
+<details open>
+    <p>{{ vacancy_instance.description }} $</p>
+</details>
 
 </body>
 </html>

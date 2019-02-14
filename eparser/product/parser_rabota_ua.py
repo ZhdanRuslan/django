@@ -1,8 +1,8 @@
 import lxml.html
-
+from .parsers_settings import CITY
 from .tools import async_request
 
-# from .models import Vacancy
+from .models import Vacancy
 
 URL_RABOTA_UA = 'https://rabota.ua/'
 vacancy_urls = []
@@ -37,7 +37,14 @@ def parse_urls(html_data):
 
 def deep_parse(html_data):
     html_data = lxml.html.fromstring(html_data)
-    titles = html_data.find_class('f-vacname-holder')
-    companies = html_data.find_class('f-vacname-holder')
-    for title in titles:
-        print(title.text_content())
+    positions = html_data.find_class('f-vacname-holder')
+    companies = html_data.find_class('fd-soldier')
+    descriptions = html_data.find_class('f-vacancy-description')
+
+    for position, company, description in zip(positions, companies, descriptions):
+        position = position.text_content()
+        company = company.text_content()
+        description = description.text_content()[41:]
+
+        Vacancy.objects.create(position=position, company=company, description=description, city=CITY)
+

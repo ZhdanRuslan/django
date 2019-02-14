@@ -3,20 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Django ITEA</title>
+    <title>Vacancy Aggregator!</title>
     <style type="text/css">
     body{
         background-color: #dce0c3;
-        padding-width: 3%;
+        margin: 3%;
+        <!--border: 2px solid maroon;-->
     }
     h1 {
-        font-size: 120%;
+        text-align: center;
+        font-size: 200%;
         font-family: Verdana, Arial, Helvetica, sans-serif;
         color: #333366;
     }
     p {
+        border: 1px solid #7922CC;
+        border-radius: 10px;
         background-color: maroon; /* Цвет фона под текстом параграфа */
         color: white; /* Цвет текста */
+        padding: 0.2%;
     }
     div {
         font-size: 100%;
@@ -24,37 +29,31 @@
         color: #333366;
 
     }
+    details {
+        <!--border: 1px solid #7922CC;-->
+        border-radius: 2px;
+        color: black;
+    }
+
 
 
     </style>
 </head>
 
 <body>
-<h1>Product Django!</h1>
+<h1>Vacancy Aggregator!</h1>
 
-<br>
-    {% for phone in all_phones %} </br>
-    <p> ID: {{phone.id}} </p>
-    Brand: {{phone.brand}} </br>
-    <a href="detail-view/{{phone.id}}">Details</a>
-    {% endfor %}
-</div>
-
+{% for vacancy in all_vacancies %}
 <div>
-    {% for laptop in all_laptops %}
-    <p> ID: {{laptop.id}} </p>
-    Brand: {{laptop.brand}} </br>
-    {% endfor %}
+    <p> {{vacancy.position}} at {{ vacancy.company }} </p>
+<details>
+    <summary>Show more...</summary>
+    {{vacancy.description}}
+</details>
 </div>
-
-<div>
-    {% for order in all_orders %}
-    <p> ID: {{order.id}} </p>
-    Customer: {{order.customer}} </br>
-    Phone: {{order.phone.name}} </br>
-    <a href="detail-view/{{order.id}}">Details</a>
-    {% endfor %}
-</div>
+<!--</br>-->
+<!--<a href="detail-view/{{vacancy.id}}">Details</a>-->
+{% endfor %}
 
 </body>
 
