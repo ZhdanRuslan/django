@@ -37,19 +37,26 @@
 
 
 
+
     </style>
 </head>
 
 <body>
 <h1>Vacancy Aggregator!</h1>
 
+
+<form method="get">
+    <input type="submit" value="START" name="mybtn" id="start_submit" class="btn btn-success"/>
+</form>
+
+
 {% for vacancy in all_vacancies %}
 <div>
     <p> {{vacancy.position}} at {{ vacancy.company }} </p>
-<details>
-    <summary>Show more...</summary>
-    {{vacancy.description}}
-</details>
+    <details>
+        <summary>Show more...</summary>
+        {{vacancy.description}}
+    </details>
 </div>
 <!--</br>-->
 <!--<a href="detail-view/{{vacancy.id}}">Details</a>-->

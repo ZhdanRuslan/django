@@ -6,8 +6,6 @@ from .tools import async_request
 
 
 def start_app():
-    # loop = asyncio.get_event_loop()
-
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
@@ -17,7 +15,7 @@ def start_app():
     url_of_vac = parse_urls(result)
 
     result_full_vac_html = loop.run_until_complete(async_request(url_of_vac))
-    # loop.close()
+    loop.close()
     deep_parse(result_full_vac_html)
 
 

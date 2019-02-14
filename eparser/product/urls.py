@@ -1,8 +1,7 @@
 from django.urls import path
-from .views import index, detail_view
+from .views import index, update_vacancies
 
 urlpatterns = [
     path('', index),
-    path('update/', index),
-    path('detail-view/<int:pk>', detail_view)
+    path('update/', update_vacancies),
 ]
