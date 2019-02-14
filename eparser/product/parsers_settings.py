@@ -1,4 +1,4 @@
-SPECIALIZATION = '/java'
+SPECIALIZATION = '/python'
 CITY = 'KIEV'
 CITY_DICT = {
     'KIEV': '/киев',
