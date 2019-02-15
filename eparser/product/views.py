@@ -19,7 +19,6 @@ class Index(View):
             start_app()
             return redirect(settings.LOGIN_REDIRECT_URL)
         if request.GET.get('logout_btn') == 'Logout':
-            print('OK')
             logout(request)
             return redirect(settings.LOGIN_URL)
         if request.GET.get('delete_btn') == 'Delete':
