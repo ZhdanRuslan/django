@@ -18,13 +18,11 @@ def parse_urls(html_data):
 
     return vacancy_urls
 
-
 def deep_parse(html_data):
     html_data = lxml.html.fromstring(html_data)
     positions = html_data.find_class('f-vacname-holder')
     companies = html_data.find_class('fd-soldier')
     descriptions = html_data.find_class('f-vacancy-description')
-    # vac_from_db = set(Vacancy.objects.all())
     for position, company, description in zip(positions, companies, descriptions):
         position = position.text_content()
         company = company.text_content()

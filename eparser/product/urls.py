@@ -1,8 +1,7 @@
 from django.urls import path, include
-from .views import index, update_vacancies
+from .views import Index
 
 urlpatterns = [
-    path('', index),
-    path('update/', update_vacancies),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('', Index.as_view(), name='index'),
 ]
