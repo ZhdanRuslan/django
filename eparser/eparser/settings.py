@@ -132,3 +132,5 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = 'accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+# REGISTER_REDIRECT_URL = 'registration/'
+SESSION_COOKIE_AGE = 5 * 60
