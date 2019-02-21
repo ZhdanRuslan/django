@@ -46,10 +46,10 @@
             </li>
 
             <!--<li class="nav-item">-->
-                <!--&lt;!&ndash;<a class="nav-link" href="#">Link</a>&ndash;&gt;-->
-                <!--<form method="get">-->
-                    <!--<input type="submit" value="Logout" name="logout_btn" id="logout_submit" class="btn btn-success"/>-->
-                <!--</form>-->
+            <!--&lt;!&ndash;<a class="nav-link" href="#">Link</a>&ndash;&gt;-->
+            <!--<form method="get">-->
+            <!--<input type="submit" value="Logout" name="logout_btn" id="logout_submit" class="btn btn-success"/>-->
+            <!--</form>-->
 
             <!--</li>-->
 
@@ -72,8 +72,19 @@
         <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
         <!--</form>-->
 
+        <form class="form-inline" method="post">
+            {% csrf_token %}
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="input_search" class="sr-only">Specialization</label>
+                <input type="text" class="form-control" id="input_search" placeholder="Developer" name="profession" value="Developer">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+
         <form method="get">
-            <input type="submit" value="Logout" name="logout_btn" id="logout_submit" class="btn btn-success"/>
+            <div class="form-group mb-2">
+                <input type="submit" value="Logout" name="logout_btn" id="logout_submit" class="btn btn-success"/>
+            </div>
         </form>
 
     </div>

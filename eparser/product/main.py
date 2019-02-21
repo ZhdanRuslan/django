@@ -5,12 +5,12 @@ from .parsers_settings import REQUEST_URL
 from .tools import async_request
 
 
-def start_app():
+def start_app(url=REQUEST_URL):
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
     list_urls = []
-    [list_urls.append(REQUEST_URL + str(i)) for i in range(1, 30)]
+    [list_urls.append(url + str(i)) for i in range(1, 30)]
     result = loop.run_until_complete(async_request(list_urls))
     url_of_vac = parse_urls(result)
 

@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.views import View, generic
 
 from .models import Vacancy
+from .parsers_settings import REQUEST_URL, BASE_URL, CITY_DICT, CITY
 from .main import start_app
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -17,7 +18,7 @@ class Index(View):
     @method_decorator(login_required, settings.LOGIN_URL)
     def get(self, request):
         if request.GET.get('parse_btn') == 'Parse':
-            start_app()
+            start_app(REQUEST_URL)
             return redirect(settings.LOGIN_REDIRECT_URL)
         if request.GET.get('logout_btn') == 'Logout':
             logout(request)
@@ -28,6 +29,13 @@ class Index(View):
         all_vacancies = Vacancy.objects.all()
         self.context['all_vacancies'] = all_vacancies
         return render(request, self.template_name, self.context)
+
+    @method_decorator(login_required, settings.LOGIN_URL)
+    def post(self, request):
+        spec = request.POST.get('profession')
+        request_url = BASE_URL + spec + CITY_DICT.get(CITY) + '/pg'
+        start_app(request_url)
+        return redirect(settings.LOGIN_REDIRECT_URL)
 
 
 class RegisterNewUser(generic.CreateView):
