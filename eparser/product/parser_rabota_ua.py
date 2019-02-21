@@ -18,6 +18,7 @@ def parse_urls(html_data):
 
     return vacancy_urls
 
+
 def deep_parse(html_data):
     html_data = lxml.html.fromstring(html_data)
     positions = html_data.find_class('f-vacname-holder')
