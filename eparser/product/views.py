@@ -11,18 +11,45 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 
+# class Index(View):
+#     template_name = 'product/index.html'
+#     context = dict()
+#
+#     @method_decorator(login_required, settings.LOGIN_URL)
+#     def get(self, request):
+#         if request.GET.get('parse_btn') == 'Parse':
+#             start_app(REQUEST_URL)
+#             return redirect(settings.LOGIN_REDIRECT_URL)
+#         if request.GET.get('logout_btn') == 'Logout':
+#             logout(request)
+#             return redirect(settings.LOGIN_URL)
+#         if request.GET.get('delete_btn') == 'Delete':
+#             Vacancy.objects.all().delete()
+#             return redirect(settings.LOGIN_REDIRECT_URL)
+#         all_vacancies = Vacancy.objects.all()
+#         self.context['all_vacancies'] = all_vacancies
+#         return render(request, self.template_name, self.context)
+#
+#     @method_decorator(login_required, settings.LOGIN_URL)
+#     def post(self, request):
+#         spec = request.POST.get('profession')
+#         request_url = BASE_URL + spec + CITY_DICT.get(CITY) + '/pg'
+#         start_app(request_url)
+#         return redirect(settings.LOGIN_REDIRECT_URL)
+
+
 class Index(View):
-    template_name = 'product/index.html'
+    template_name = 'product/main.html'
     context = dict()
 
-    @method_decorator(login_required, settings.LOGIN_URL)
+    # @method_decorator(login_required, settings.LOGIN_URL)
     def get(self, request):
         if request.GET.get('parse_btn') == 'Parse':
             start_app(REQUEST_URL)
             return redirect(settings.LOGIN_REDIRECT_URL)
         if request.GET.get('logout_btn') == 'Logout':
             logout(request)
-            return redirect(settings.LOGIN_URL)
+            return redirect(settings.LOGIN_REDIRECT_URL)
         if request.GET.get('delete_btn') == 'Delete':
             Vacancy.objects.all().delete()
             return redirect(settings.LOGIN_REDIRECT_URL)
@@ -30,13 +57,12 @@ class Index(View):
         self.context['all_vacancies'] = all_vacancies
         return render(request, self.template_name, self.context)
 
-    @method_decorator(login_required, settings.LOGIN_URL)
+        # @method_decorator(login_required, settings.LOGIN_URL)
     def post(self, request):
         spec = request.POST.get('profession')
         request_url = BASE_URL + spec + CITY_DICT.get(CITY) + '/pg'
         start_app(request_url)
         return redirect(settings.LOGIN_REDIRECT_URL)
-
 
 class RegisterNewUser(generic.CreateView):
 

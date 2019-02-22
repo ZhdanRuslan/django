@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+<main role="main" class="container">
+
+    {% for vacancy in all_vacancies %}
+    <div>
+        <p class="lead"><b>{{vacancy.position}} </b> at {{ vacancy.company }} </p>
+        <div class="card card-body">{{vacancy.description}}</div>
+    </div>
+    {% endfor %}
+
+</main>
+
+{% endblock %}
