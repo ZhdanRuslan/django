@@ -3,13 +3,14 @@
 {% block body %}
 
 <main role="main" class="container">
-
+    {% if request.user.is_authenticated %}
     {% for vacancy in all_vacancies %}
     <div>
         <p class="lead"><b>{{vacancy.position}} </b> at {{ vacancy.company }} </p>
         <div class="card card-body">{{vacancy.description}}</div>
     </div>
     {% endfor %}
+    {% endif %}
 
 </main>
 

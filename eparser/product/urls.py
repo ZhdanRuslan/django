@@ -1,9 +1,7 @@
-from django.urls import path, include
+from django.urls import path
 
-from .views import Index, RegisterNewUser
+from .views import Index
 
 urlpatterns = [
-    # path('register/', RegisterNewUser.as_view(), name='register'),
-    # path('accounts/', include('django.contrib.auth.urls')),
     path('', Index.as_view(), name='index'),
 ]

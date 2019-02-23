@@ -13,7 +13,7 @@ def _register(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('post_list')
+            return render(request, 'product/main.html')
     else:
         form = UserCreationForm()
     return render(request, 'user_app/signup.html', {'form': form})
