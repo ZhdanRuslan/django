@@ -15,7 +15,6 @@ def parse_urls(html_data):
     if hrefs:
         for href in hrefs:
             vacancy_urls.append(URL_RABOTA_UA + href.get('href'))
-
     return vacancy_urls
 
 
