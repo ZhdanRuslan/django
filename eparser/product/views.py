@@ -27,9 +27,8 @@ class Index(View):
         return render(request, self.template_name, self.context)
 
     def post(self, request):
-        spec = request.POST.get('profession')
+        spec = request.POST.get('profession').lower()
         request_url = BASE_URL + spec + str(CITY_DICT.get(CITY)) + '/pg'
-        print(request_url)
         start_app(request_url)
         del spec, request_url
         return redirect(settings.LOGIN_REDIRECT_URL)
