@@ -33,4 +33,6 @@ class Index(View):
         city = request.POST.get('city')
         request_url = BASE_URL + spec + str(CITY_DICT.get(city)) + '/pg'
         asyncio.run(start_app(request_url))
-        return redirect(settings.LOGIN_REDIRECT_URL)
+        self.context['city'] = city
+        # return redirect(settings.LOGIN_REDIRECT_URL)
+        return render(request, self.template_name, self.context)

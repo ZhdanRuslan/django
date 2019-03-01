@@ -2,6 +2,70 @@
 
 {% block body %}
 
+<div align="left">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!--<nav class="navbar navbar-toggleable-md navbar-light bg-light">-->
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                {% if not request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Sign in</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                {% else %}
+            </ul>
+        </div>
+        <!--<div class="form-group mx-sm-3 mb-2">-->
+        <div>
+            <form method="get">
+                <input type="submit" value="Parse" name="parse_btn" id="parse_submit" class="btn btn-primary"/>
+                <input type="submit" value="Delete" name="delete_btn" id="delete_submit"
+                       class="btn btn-danger"/>
+            </form>
+
+        </div>
+
+
+        <form class="form-inline" method="post">
+            {% csrf_token %}
+
+            <div class="form-group mx-sm-3 mb-2">
+
+                <select class="form-control" id="Specialization" name="profession">
+                    <option>All</option>
+                    <option>Java</option>
+                    <option>Python</option>
+                    <option>JavaScript</option>
+                    <option>PHP</option>
+                </select>
+
+                <select class="form-control" id="City" name="city">
+                    <option>All</option>
+                    <option>Kiev</option>
+                    <option>Kharkov</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+
+        </form>
+
+        <div class="form-group mb-2">
+            <form method="get">
+                <!--<div class="form-group mb-2">-->
+                    <input type="submit" value="Logout" name="logout_btn" id="logout_submit"
+                           class="btn btn-success"/>
+                <!--</div>-->
+            </form>
+        </div>
+
+        {% endif %}
+    </nav>
+</div>
+
 <main role="main" class="container">
     {% if request.user.is_authenticated %}
     {% for vacancy in all_vacancies %}
