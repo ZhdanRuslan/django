@@ -14,4 +14,4 @@ CITY_DICT = {
     'All': '/украина',
 }
 BASE_URL = 'https://rabota.ua/zapros/'
-REQUEST_URL = BASE_URL + SPECIALIZATION_DICT.get('All') + CITY_DICT.get('All') + '/pg'
+REQUEST_URL = BASE_URL + SPECIALIZATION_DICT.get('All') + CITY_DICT.get('All')

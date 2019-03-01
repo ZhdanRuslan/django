@@ -6,7 +6,7 @@ from django.views import View
 from django.conf import settings
 
 from .models import Vacancy
-from .parsers_settings import REQUEST_URL, BASE_URL, CITY_DICT
+from .parsers_settings import REQUEST_URL, BASE_URL, CITY_DICT, SPECIALIZATION_DICT
 from .main import start_app
 
 
@@ -31,8 +31,6 @@ class Index(View):
     def post(self, request):
         spec = request.POST.get('profession')
         city = request.POST.get('city')
-        request_url = BASE_URL + spec + str(CITY_DICT.get(city)) + '/pg'
+        request_url = BASE_URL + str(SPECIALIZATION_DICT.get(spec)) + str(CITY_DICT.get(city))
         asyncio.run(start_app(request_url))
-        self.context['city'] = city
-        # return redirect(settings.LOGIN_REDIRECT_URL)
-        return render(request, self.template_name, self.context)
+        return redirect(settings.LOGIN_REDIRECT_URL)
