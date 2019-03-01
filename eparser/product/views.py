@@ -16,6 +16,7 @@ class Index(View):
 
     def get(self, request):
         if request.GET.get('parse_btn') == 'Parse':
+            self.context['city'] = 'Ukraine'
             asyncio.run(start_app(REQUEST_URL))
             return redirect(settings.LOGIN_REDIRECT_URL)
         if request.GET.get('logout_btn') == 'Logout':
