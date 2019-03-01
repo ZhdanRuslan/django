@@ -26,7 +26,6 @@ def deep_parse(html_data_str):
     descriptions = html_data.find_class('f-vacancy-description')
     for position, company, description in zip(positions, companies, descriptions):
         position = position.text_content()
-        print(position)
         company = company.text_content()
         description = description.text_content()[41:]
         if Vacancy.objects.filter(position=position, company=company, description=description, city=CITY):

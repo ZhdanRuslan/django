@@ -39,12 +39,30 @@
 
         <form class="form-inline" method="post">
             {% csrf_token %}
+            <!--<div class="form-group mx-sm-3 mb-2">-->
+            <!--<label for="input_search" class="sr-only">Specialization</label>-->
+            <!--<input type="text" class="form-control" id="input_search" placeholder="Developer"-->
+            <!--name="profession">-->
+            <!--</div>-->
+
             <div class="form-group mx-sm-3 mb-2">
-                <label for="input_search" class="sr-only">Specialization</label>
-                <input type="text" class="form-control" id="input_search" placeholder="Developer"
-                       name="profession">
+
+                <select class="form-control" id="Specialization" name="profession">
+                    <option>All</option>
+                    <option>Java</option>
+                    <option>Python</option>
+                    <option>JavaScript</option>
+                    <option>PHP</option>
+                </select>
+
+                <select class="form-control" id="City" name="city">
+                    <option>All</option>
+                    <option>Kiev</option>
+                    <option>Kharkov</option>
+                </select>
             </div>
             <button type="submit" class="btn btn-primary mb-2">Search</button>
+
         </form>
 
         <form method="get">
