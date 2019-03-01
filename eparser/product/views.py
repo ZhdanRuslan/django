@@ -31,7 +31,5 @@ class Index(View):
     def post(self, request):
         spec = request.POST.get('profession')
         request_url = BASE_URL + spec + str(CITY_DICT.get(CITY)) + '/pg'
-        print(request_url)
         asyncio.run(start_app(request_url))
-        print(f'PROF: ' + spec)
         return redirect(settings.LOGIN_REDIRECT_URL)
