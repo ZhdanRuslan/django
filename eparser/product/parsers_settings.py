@@ -16,6 +16,7 @@ CITY_DICT = {
     'Dnepr': '/днепропетровск',
     'Lvov': '/львов',
     'Odessa': '/одесса',
+    'Poltava': '/полтава',
     'All': '/украина',
 }
 BASE_URL = 'https://rabota.ua/zapros/'
