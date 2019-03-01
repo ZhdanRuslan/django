@@ -1,18 +1,15 @@
 import asyncio
-import aiohttp
 
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
 
 async def fetch(session, url):
     async with session.get(url) as response:
-        if response.status == 200:
-            return await response.text()
+        return await response.text()
 
 
-async def async_request(urls):
-    tasks = []
-    async with aiohttp.ClientSession() as session:
-        for url in urls:
-            tasks.append(fetch(session, url))
-        return str(await asyncio.gather(*tasks))
+async def fetch_all(session, urls):
 
-
+    results = await asyncio.gather(*[asyncio.create_task(fetch(session, url))
+                                     for url in urls])
+    return str(results)

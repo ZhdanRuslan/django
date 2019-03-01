@@ -1,3 +1,5 @@
+import asyncio
+
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from django.views import View
@@ -14,7 +16,7 @@ class Index(View):
 
     def get(self, request):
         if request.GET.get('parse_btn') == 'Parse':
-            start_app(None)
+            asyncio.run(start_app(REQUEST_URL))
             return redirect(settings.LOGIN_REDIRECT_URL)
         if request.GET.get('logout_btn') == 'Logout':
             logout(request)
@@ -30,6 +32,6 @@ class Index(View):
         spec = request.POST.get('profession')
         request_url = BASE_URL + spec + str(CITY_DICT.get(CITY)) + '/pg'
         print(request_url)
-        start_app(request_url)
-        del spec, request_url
+        asyncio.run(start_app(request_url))
+        print(f'PROF: ' + spec)
         return redirect(settings.LOGIN_REDIRECT_URL)
