@@ -34,12 +34,18 @@
             <option>Python</option>
             <option>JavaScript</option>
             <option>PHP</option>
+            <option>C++</option>
+            <option>BI</option>
         </select>
 
         <select class="form-control" id="City" name="city">
             <option>All</option>
             <option>Kiev</option>
             <option>Kharkov</option>
+            <option>Dnepr</option>
+            <option>Lvov</option>
+            <option>Odessa</option>
+            <option>Poltava</option>
         </select>
 
         <button type="submit" class="btn btn-outline-success">Search</button>
@@ -57,6 +63,7 @@
     {% if request.user.is_authenticated %}
     {% for vacancy in all_vacancies %}
     <div>
+
         <p class="lead"><b>{{vacancy.position}} </b> at {{ vacancy.company }} </p>
         <div class="card card-body" title="{{vacancy.description}}">{{vacancy.description | truncatewords:50}}</div>
     </div>

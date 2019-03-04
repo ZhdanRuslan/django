@@ -5,12 +5,17 @@ SPECIALIZATION_DICT = {
     'Python': 'python',
     'JavaScript': 'javascript',
     'PHP': 'php',
-
+    'C++': 'cpp',
+    'BI': 'bi',
 }
 CITY = 'KIEV'
 CITY_DICT = {
     'Kiev': '/киев',
     'Kharkov': '/харьков',
+    'Dnepr': '/днепропетровск',
+    'Lvov': '/львов',
+    'Odessa': '/одесса',
+    'Poltava': '/полтава',
     'All': '/украина',
 }
 BASE_URL = 'https://rabota.ua/zapros/'
