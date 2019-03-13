@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 CUSTOM_APP = [
     'product',
     'user_app',
+    'rest_framework',
+    'rest',
 ]
 
 INSTALLED_APPS += CUSTOM_APP
@@ -75,6 +77,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'eparser.wsgi.application'
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
