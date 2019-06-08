@@ -5,6 +5,7 @@ attrs==18.2.0
 chardet==3.0.4
 Django==2.1.5
 django-frontend-template==1.2.0
+djangorestframework==3.9.4
 idna==2.8
 idna-ssl==1.1.0
 lxml==4.3.1
