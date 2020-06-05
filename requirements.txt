@@ -3,7 +3,7 @@ aiosocksy==0.1.2
 async-timeout==3.0.1
 attrs==18.2.0
 chardet==3.0.4
-Django==2.1.5
+Django==2.2.13
 django-frontend-template==1.2.0
 djangorestframework==3.9.4
 idna==2.8
